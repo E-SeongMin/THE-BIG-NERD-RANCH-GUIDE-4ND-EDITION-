@@ -1,5 +1,6 @@
 package com.bignerdranch.android.geoquiz
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var falseButton: Button
     private lateinit var nextButton: Button
     private lateinit var questionTextView: TextView
+    private lateinit var cheatButton: Button
 
     companion object {
         private const val TAG = "MainActivity"
@@ -47,12 +49,13 @@ class MainActivity : AppCompatActivity() {
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
         questionTextView = findViewById(R.id.question_text_view)
+        cheatButton = findViewById(R.id.cheat_button)
 
         trueButton.setOnClickListener {
             checkAnswer(true)
         }
 
-        trueButton.setOnClickListener {
+        falseButton.setOnClickListener {
             checkAnswer(false)
         }
 
@@ -60,6 +63,11 @@ class MainActivity : AppCompatActivity() {
 //            currentIndex = ( currentIndex + 1 ) % questionBank.size
             quizViewModel.moveToNext()
             updateQuestion()
+        }
+
+        cheatButton.setOnClickListener {
+            val intent = Intent(this, CheatActivity::class.java)
+            startActivity(intent)
         }
 
         updateQuestion()

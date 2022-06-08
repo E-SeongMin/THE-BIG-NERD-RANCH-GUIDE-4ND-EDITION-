@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GeoQuiz">
         <activity
+            android:name=".CheatActivity" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
